@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Kiro Website</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400i|Merriweather:300,400,700,900');
+      @import url('/css/photoswipe.min.css');
+
+      *, *:before, *:after{
+        box-sizing: border-box;
+      }
+
+      body{
+        margin: 0;
+        padding: 0;
+        padding-left: 280px;
+      }
+
+      #header{
+        position: fixed;
+        display: flex;
+        height: 100%;
+        width: 280px;
+        left: 0;
+        flex-direction: column;
+        justify-content: space-between;
+        color: white;
+        background: #111;
+        text-align: center;
+        font-family: 'Merriweather', serif;
+      }
+      .menu{
+        margin: 0;
+        padding: 0;
+      }
+      .menu a {
+        text-decoration: none;
+        color: white;
+      }
+      .menu > li{
+        list-style-type: none;
+        text-transform: uppercase;
+        font-size: 18px;
+        line-height: 0.78;
+        padding: 5px;
+        margin: 10px;
+      }
+      .logo{
+        padding: 50px 0;
+        min-height: 30%;
+      }
+      .site-name{
+        font-family: 'IM Fell Double Pica', serif;
+        font-size: 42px;
+      }
+      .site-description{
+        color: #686868;
+        font-size: 14px;
+        line-height: 1.6em;
+        font-weight: 300;
+        text-transform: uppercase;
+        padding-top: 30px;
+      }
+      .gallery.photo {
+        overflow: hidden;
+      }
+      .gallery.artwork{
+        padding: 20px;
+        background: #f0f0f0;
+      }
+      .gallery.artwork .scroll-gallery-item{
+        margin: 20px;
+        display: block;
+        float: left;
+        line-height: 0;
+        background-size: cover;
+        text-decoration: none;
+      }
+      .gallery.photo .gallery-inner{
+        margin: -3px;
+        margin-left: 3px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .gallery.photo .scroll-gallery-item .img-holder{
+        display: none;
+      }
+      .gallery.photo .scroll-gallery-item {
+        position: relative;
+        display: inline-flex;
+        flex-grow: 1;
+        margin: 3px;
+        /*margin: 9px;*/
+        background: center no-repeat;
+        background-size: cover;
+        text-decoration: none;
+      }
+      .gallery.artwork .scroll-gallery-item img{
+        position: relative;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+      }
+      .gallery.photo .scroll-gallery-item img{
+        vertical-align: bottom;
+        object-fit: cover;
+        flex-grow: 1;
+        height: auto !important;
+        max-height: 380px;
+        opacity: 0;
+        z-index: -1;
+      }
+      .gallery.artwork .text-card{
+        min-height: 0;
+        min-width: 0;
+      }
+      .text-card-title{
+        font-family: 'IM Fell Double Pica', serif;
+        font-weight: 400;
+        line-height: 1;
+        padding-bottom: 25px;
+        font-size: 52px;
+        color: #444;
+        margin: 0;
+      }
+      .gallery.artwork .text-card,
+      .gallery.artwork .scroll-gallery-item {
+        /* width: calc((100% + 30px) / 3 * 2 - 20px * 2 ); */
+        width: calc((100% + 40px) / 4 - 20px * 3 );
+      }
+
+      .gallery.artwork .text-card{
+        /* width: calc((100% + 40px) / 2 ); */
+        width: calc((100% + 40px) / 2 - 20px * 4);
+      }
+      .gallery .text-card{
+        display: inline-block;
+        font-family: 'Merriweather', serif;
+        line-height: 1.6;
+        padding: 0 calc(2vw + 10px);
+        font-size: calc(.75vw + 12px);
+        font-weight: 300;
+
+        min-width: 580px;
+        margin: 20px;
+        padding: 40px;
+        vertical-align: middle;
+        /* display: table; */
+        /* background: #b11; */
+        background: white;
+        color: #666;
+        font-weight: 300;
+        display: block;
+        align-content: center;
+        min-height: 380px;
+        width: 50%;
+      }
+      .gallery.photo .text-card > span{
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
+      }
+      .legal-social{
+        position: relative;
+        padding: 0 30px;
+        min-height: 30%;
+        vertical-align: bottom;
+      }
+      .legal-social .social-links{
+        position: absolute;
+        width: 100%;
+        bottom: 40px;
+        left: 0;
+      }
+      .content{
+        font-family: 'Merriweather', serif;
+        font-size: 20px;
+        font-weight: 300;
+        color: #666;
+        line-height: 1.6em;
+      }
+      .content *:first-child{
+        margin-top: 0 !important;
+      }
+      .main-content{
+        display: flex;
+        padding: 30px 60px;m
+      }
+      .col-aside,
+      .col-content{
+        padding: 60px;
+      }
+      .col-aside{
+        width: 40%;
+        min-height: 1px;
+        /* max-width: 465px; */
+      }
+      .col-content{
+        width: 60%;
+      }
+      .content h1{
+        font-family: 'IM Fell Double Pica', serif;
+        font-size: 52px;
+        font-weight: 400;
+        color: #333;
+        line-height: 1em;
+      }
+
+      .content h2{
+        font-family: 'IM Fell Double Pica', serif;
+        font-size: 45px;
+        font-weight: 400;
+        color: #333;
+        line-height: 1em;
+      }
+
+      .big-photo{
+        margin-bottom: 75px;
+      }
+      .img-list{
+        display: flex;
+        flex-wrap: wrap;
+        margin: -2px;
+        line-height: 0;
+      }
+      .img-list a{
+        display: block;
+        text-decoration: none;
+        max-width: calc(33.333% - 4px);
+        margin: 2px;
+        background-size: cover;
+        text-decoration: none;
+      }
+      .img-holder{
+        position: relative;
+        display: block;
+        z-index: -1;
+      }
+      .img-list a:before{
+        display: block;
+        content: "";
+        height: 0;
+        padding-bottom: calc(100% - 5px);
+      }
+      .img-list > a > img{
+        position: relative;
+        position: absolute;
+        z-index: -1;
+        width: 175px;
+        height: 0;
+        opacity: 0;
+      }
+      img{
+        max-width: 100%;
+      }
+      .content p{
+        padding: .25em 0;
+      }
+      .social-links{
+        padding: 0;
+        margin: 0;
+      }
+      .social-links .social-link{
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+
+      }
+      .social-links .social-link a{
+        display: inline-block;
+        height: 30px;
+        width: 36px;
+        filter: invert(1);
+        background: no-repeat center;
+        background-size: contain;
+        margin: 0 5px;
+
+      }
+      #facebook{
+        background-image: url(/css/facebook-black.svg)
+      }
+      #twitter{
+        background-image: url(/css/twitter-black.svg)
+      }
+      #instagram{
+        background-image: url(/css/instagram-black.svg)
+      }
+      #vimeo{
+        background-image: url(/css/vimeo-black.svg)
+      }
+      .content{
+        transition: filter 0.25s;
+      }
+      .content.asd{
+        filter: brightness(0.4) invert(75%) contrast(0.3) brightness(0.6) sepia(0.05);
+      }
+      #google-map{
+        width: 100%;
+        height: 72vh;
+        /* filter: grayscale(.45) sepia(.05); */
+      }
+      #google-map + main{
+        height: 28vh;
+      }
+
+      #location-submit:focus + #location-input,
+      #location-input:focus{
+
+      }
+      #location-submit {
+        text-indent: -9999px;
+      }
+      #location-submit:focus {
+        text-indent: none;
+      }
+      #location-input-overlay{
+        position: fixed;
+        display: none;
+        width: calc(100vw - 280px);
+        height: 100vh;
+        right: 0;
+        top: 0;
+        /* z-index: -1; */
+        background: white;
+        opacity: .5;
+        pointer-events: none;
+      }
+      #location-submit:focus + #location-input + [for="location-submit"] + #location-input-overlay,
+      #location-input:focus  + [for="location-submit"] + #location-input-overlay {
+        display: block;
+      }
+      .gallery-heading{
+        position: absolute;
+        right: 0;
+        display: inline;
+        background: rgba(255, 224, 0, .8);
+        color: #222;
+        text-decoration: none;
+        padding: 5px 8px;
+        font-family: 'Merriweather', serif;
+        font-weight: 900;
+        font-size: 24px;
+        bottom: 7%;
+        transition: background .2s;
+        /* background: rgba(0,0,0,.7); */
+        /* color: white; */
+        /* top: 30%;
+        bottom: auto; */
+        left: 0;
+        right: auto;
+      }
+      .scroll-gallery-item:hover .gallery-heading{
+        background: rgba(238, 211, 0, .9);
+        /* background: black; */
+      }
+      .scroll-gallery-item:nth-child(4n) .gallery-heading,
+      .scroll-gallery-item:nth-child(4n-1) .gallery-heading{
+        left:  auto;
+        right: 0;
+      }
+      .scroll-gallery-item:nth-child(even) .gallery-heading{
+        top: 7%;
+        bottom: auto;
+      }
+    </style>
+  </head>
+<body>

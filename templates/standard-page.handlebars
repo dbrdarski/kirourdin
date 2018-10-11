@@ -1,0 +1,25 @@
+{{> head }}
+{{> header }}
+<main class="main-content">
+  <aside class="col-aside">
+    <img src="img?src=/images/{{path}}/{{data.images.0.url}}&h=500&w=500&a=t" alt="" class="big-photo">
+    <div class="img-list">
+      {{#each data.images}}
+      <a href="images/{{../path}}/{{this.url}}"
+        data-w={{this.w}}
+        data-h="{{this.h}}"
+        data-msrc="img?src=/images/{{../path}}/{{this.url}}&w=400"
+        style="background-image: url(img?src=/images/{{../path}}/{{this.url}}&w=175&h=175)"
+        class="photoswipe"
+      >
+        <img src="img?src=/images/{{../path}}/{{this.url}}&w=400" alt="">
+      </a>
+      {{/each}}
+    </div>
+  </aside>
+  <div class="col-content content">
+    <h1>{{ title }}</h1>
+    {{{ data.content }}}
+  </div>
+</main>
+{{> footer }}

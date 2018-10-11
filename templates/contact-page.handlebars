@@ -1,0 +1,20 @@
+{{> head }}
+{{> header }}
+<div id="google-map"></div>
+<main class="col-content content">
+  <!-- <div class="col-content content"> -->
+    <!-- <h1>{{ title }}</h1> -->
+    <!-- {{{ data.content }}} -->
+    {{#each data.galleries}}
+      <h2>{{ this.title }}</h2>
+      <div> {{ this.address }} </div>
+      <a href="{{ this.website_url}}" target="_blank">{{ this.website }}</a>
+      <button type="button" name="button" id="location-submit"></button>
+      <input type="text" id="location-input" placeholder="Your location">
+      <label for="location-submit">Find route</label>
+      <div id="location-input-overlay"></div>
+
+    {{/each}}
+  <!-- </div> -->
+</main>
+{{> footer }}

@@ -1,0 +1,22 @@
+{{> head}}
+{{> header}}
+<div class="gallery photo">
+  <div class="gallery-inner">
+    {{#if data.text}}
+    <div class="text-card">
+      <h1 class="text-card-title">{{title}}</h1>
+      <span>{{data.text}}</span>
+    </div>
+    {{/if}}
+    {{#each data}}
+    <a href="{{../path}}{{this.data}}"
+      style="display: block; background-image: url(/img?src=/images/{{this.path}}/{{this.thumb}}&h=600)"
+      class="scroll-gallery-item"
+    >
+      <img src="/img?src=/images/{{this.path}}/{{this.thumb}}&h=600" alt="{{}}" class="attachment-large">
+      <div class="gallery-heading">{{this.title}}</div>
+    </a>
+    {{/each}}
+  </div>
+</div>
+{{> footer }}

@@ -1,0 +1,25 @@
+<header id="header">
+  <div class="logo">
+    <div class="site-name"> Kiro Urdin </div>
+    <div class="site-description"> Artistic Founder of<br>Planetarism Movement </div>
+  </div>
+  <nav>
+    <ul class="menu">
+    {{#each menu}}
+      <li><a href="{{this.url}}">{{this.title}}</a></li>
+    {{/each}}
+    </ul>
+  </nav>
+  <div class="legal-social">
+    <ul class="social-links">
+      {{#each social}}
+      <li class="social-link">
+        <a href="{{this.url}}" id="{{this.name}}" target="_blank"></a>
+      </li>
+      {{/each}}
+    </ul>
+    <div class="legal">
+      <small>&copy; Kiro Urdin</small>
+    </div>
+  </div>
+</header>
